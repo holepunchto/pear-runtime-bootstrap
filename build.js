@@ -64,5 +64,8 @@ if (isLinux) {
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.dylib', 'build/lib/launch.dylib')
 } else if (isWindows) {
-  console.log('sup')
+  await rename(`vendor/electron-runtime/dist/win-unpacked`, 'build/bin/pear-runtime-app')
+  await rename('vendor/wakeup/out/pear/pear.exe', 'build/bin/pear.exe')
+  await rename('vendor/pear-runtime-bare/build/pear-runtime.exe', 'build/bin/pear-runtime.exe')
+  await rename('vendor/libappling/build/launch.dll', 'build/lib/launch.dll')
 }
