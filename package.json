@@ -2,14 +2,15 @@
   "name": "pear-runtime-bootstrap",
   "version": "0.0.1",
   "description": "Simple script to bootstrap the pear runtime",
-  "main": "index.js",
+  "main": "build.js",
   "scripts": {
     "test": "standard && brittle test.js"
   },
   "author": "Holepunch",
   "license": "Apache-2.0",
   "dependencies": {
-    "shellblazer": "^1.0.6"
+    "shellblazer": "^1.0.6",
+    "which-runtime": "^1.2.0"
   },
   "devDependencies": {
     "brittle": "^3.4.0",
