@@ -1,0 +1,12 @@
+[submodule "vendor/pear-runtime-bare"]
+	path = vendor/pear-runtime-bare
+	url = https://github.com/holepunchto/pear-runtime-bare
+[submodule "vendor/electron-runtime"]
+	path = vendor/electron-runtime
+	url = https://github.com/holepunchto/electron-runtime
+[submodule "vendor/libappling"]
+	path = vendor/libappling
+	url = https://github.com/holepunchto/libappling
+[submodule "vendor/wakeup"]
+	path = vendor/wakeup
+	url = https://github.com/holepunchto/wakeup
