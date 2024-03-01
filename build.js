@@ -44,7 +44,7 @@ if (isLinux) {
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.so', 'build/lib/launch.so')
 } else if (isMac) {
-  await rename(`vendor/electron-runtime/dist/mac-${arch}/Pear Runtime.app`, 'build/bin/Pear Runtime.app')
+  await rename(`vendor/electron-runtime/dist/mac${arm64 ? '-arm64' : ''}/Pear Runtime.app`, 'build/bin/Pear Runtime.app')
   await rename('vendor/wakeup/out/Pear.app', 'build/bin/Pear.app')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.dylib', 'build/lib/launch.dylib')
