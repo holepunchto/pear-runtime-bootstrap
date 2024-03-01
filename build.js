@@ -7,11 +7,11 @@ import { isLinux, isMac, isWindows, arch } from 'which-runtime'
 let bareDev = 'bare-dev'
 
 try {
-  await shell([bareDev])
+  await shell([bareDev, '--version'])
 } catch {
   if (isWindows) {
     bareDev = 'bare-dev.cmd'
-    await shell([bareDev])
+    await shell([bareDev, '--version'])
   }
 }
 
