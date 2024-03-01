@@ -5,43 +5,47 @@ import { mkdir, rename } from 'fs/promises'
 import { isLinux, isMac, isWindows, arch } from 'which-runtime'
 
 let bareDev = 'bare-dev'
+let cmake = 'cmake'
+let npm = 'npm'
 
 try {
   await shell([bareDev, '--version'])
 } catch {
   if (isWindows) {
-    bareDev = 'bare-dev.cmd'
+    bareDev += '.cmd'
+    cmake += '.cmd'
+    npm += '.cmd'
     await shell([bareDev, '--version'])
   }
 }
 
-await shell(['bare-dev', 'vendor', 'sync'])
+await shell([bareDev, 'vendor', 'sync'])
 
 const shellForLibappling = shell.configure({ cwd: 'vendor/libappling' })
 await shellForLibappling(
-  ['npm', 'install'],
-  ['bare-dev', 'configure', '--verbose'],
-  ['bare-dev', 'build']
+  [npm, 'install'],
+  [bareDev, 'configure', '--verbose'],
+  [bareDev, 'build']
 )
 
 const shellForPearRuntimeBare = shell.configure({ cwd: 'vendor/pear-runtime-bare' })
 await shellForPearRuntimeBare(
-  ['bare-dev', 'configure', '--verbose'],
-  ['bare-dev', 'build'],
-  ['cmake', '--install', 'build', '--prefix', 'out']
+  [bareDev, 'configure', '--verbose'],
+  [bareDev, 'build'],
+  [cmake, '--install', 'build', '--prefix', 'out']
 )
 
 const shellForWakeup = shell.configure({ cwd: 'vendor/wakeup' })
 await shellForWakeup(
-  ['bare-dev', 'configure', '--verbose'],
-  ['bare-dev', 'build'],
-  ['cmake', '--install', 'build', '--prefix', 'out']
+  [bareDev, 'configure', '--verbose'],
+  [bareDev, 'build'],
+  [cmake, '--install', 'build', '--prefix', 'out']
 )
 
 const shellForElectronRuntime = shell.configure({ cwd: 'vendor/electron-runtime' })
 await shellForElectronRuntime(
-  ['npm', 'install'],
-  ['npm', 'run', 'dist']
+  [npm, 'install'],
+  [npm, 'run', 'dist']
 )
 
 await mkdir('build/bin', { recursive: true })
