@@ -36,13 +36,15 @@ await shellForElectronRuntime(
 await mkdir('build/bin', { recursive: true })
 await mkdir('build/lib', { recursive: true })
 
+const arm64 = arch === 'arm64'
+
 if (isLinux) {
-  await rename('vendor/electron-runtime/dist/linux-unpacked', 'build/bin/pear-runtime-app')
+  await rename(`vendor/electron-runtime/dist/linux-${arm64 ? 'arm64-' : ''}unpacked`, 'build/bin/pear-runtime-app')
   await rename('vendor/wakeup/out/pear/pear', 'build/bin/pear')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.so', 'build/lib/launch.so')
 } else if (isMac) {
-  await rename('vendor/electron-runtime/dist/mac-' + arch + '/Pear Runtime.app', 'build/bin/Pear Runtime.app')
+  await rename(`vendor/electron-runtime/dist/mac-${arch}/Pear Runtime.app`, 'build/bin/Pear Runtime.app')
   await rename('vendor/wakeup/out/Pear.app', 'build/bin/Pear.app')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.dylib', 'build/lib/launch.dylib')
