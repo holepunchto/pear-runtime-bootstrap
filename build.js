@@ -4,6 +4,17 @@ import shell from 'shellblazer'
 import { mkdir, rename } from 'fs/promises'
 import { isLinux, isMac, isWindows, arch } from 'which-runtime'
 
+let bareDev = 'bare-dev'
+
+try {
+  await shell([bareDev])
+} catch {
+  if (isWindows) {
+    bareDev = 'bare-dev.cmd'
+    await shell([bareDev])
+  }
+}
+
 await shell(['bare-dev', 'vendor', 'sync'])
 
 const shellForLibappling = shell.configure({ cwd: 'vendor/libappling' })
