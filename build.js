@@ -38,7 +38,7 @@ await mkdir('build/lib', { recursive: true })
 
 if (isLinux) {
   await rename('vendor/electron-runtime/dist/linux-unpacked', 'build/bin/pear-runtime-app')
-  await rename('vendor/wakeup/out/pear', 'build/bin/pear')
+  await rename('vendor/wakeup/out/pear/pear', 'build/bin/pear')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.so', 'build/lib/launch.so')
 } else if (isMac) {
