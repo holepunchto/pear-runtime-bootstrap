@@ -55,7 +55,7 @@ const arm64 = arch === 'arm64'
 
 if (isLinux) {
   await rename(`vendor/electron-runtime/dist/linux-${arm64 ? 'arm64-' : ''}unpacked`, 'build/bin/pear-runtime-app')
-  await rename('vendor/wakeup/build/bin/linux/pear', 'build/bin/pear')
+  await rename('vendor/wakeup/build/bin/pear', 'build/bin/pear')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.so', 'build/lib/launch.so')
 } else if (isMac) {
