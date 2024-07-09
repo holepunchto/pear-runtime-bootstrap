@@ -55,17 +55,17 @@ const arm64 = arch === 'arm64'
 
 if (isLinux) {
   await rename(`vendor/electron-runtime/dist/linux-${arm64 ? 'arm64-' : ''}unpacked`, 'build/bin/pear-runtime-app')
-  await rename('vendor/wakeup/out/pear/pear', 'build/bin/pear')
+  await rename('vendor/wakeup/build/bin/linux/pear', 'build/bin/pear')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.so', 'build/lib/launch.so')
 } else if (isMac) {
   await rename(`vendor/electron-runtime/dist/mac${arm64 ? '-arm64' : ''}/Pear Runtime.app`, 'build/bin/Pear Runtime.app')
-  await rename('vendor/wakeup/out/Pear.app', 'build/bin/Pear.app')
+  await rename('vendor/wakeup/build/bin/darwin/Pear.app', 'build/bin/Pear.app')
   await rename('vendor/pear-runtime-bare/build/pear-runtime', 'build/bin/pear-runtime')
   await rename('vendor/libappling/build/launch.dylib', 'build/lib/launch.dylib')
 } else if (isWindows) {
   await rename(`vendor/electron-runtime/dist/win-unpacked`, 'build/bin/pear-runtime-app')
-  await rename('vendor/wakeup/out/pear/pear.exe', 'build/bin/pear.exe')
+  await rename('vendor/wakeup/build/bin/win32/pear.exe', 'build/bin/pear.exe')
   await rename('vendor/pear-runtime-bare/build/Release/pear-runtime.exe', 'build/bin/pear-runtime.exe')
   await rename('vendor/libappling/build/Release/launch.dll', 'build/lib/launch.dll')
 }
