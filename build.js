@@ -15,8 +15,28 @@ try {
     bareDev += '.cmd'
     cmake += '.cmd'
     npm += '.cmd'
-    await shell([bareDev, '--version'])
+    try {
+      await shell([bareDev, '--version'])
+    } catch {
+      console.error('\n Error: bare-dev CLI not found.')
+      console.error('Please install it globally: npm install -g bare-dev\n')
+      process.exit(1)
+    }
+  } else {
+    console.error('\n Error: bare-dev CLI not found.')
+    console.error('Please install it globally: npm install -g bare-dev\n')
+    process.exit(1)
   }
+}
+
+// Pre-flight check for other dependencies
+try {
+  await shell([cmake, '--version'])
+  await shell([npm, '--version'])
+} catch {
+  console.error('\n Error: cmake or npm not found.')
+  console.error('Please ensure they are installed and in your PATH.\n')
+  process.exit(1)
 }
 
 await shell([bareDev, 'vendor', 'sync'])
